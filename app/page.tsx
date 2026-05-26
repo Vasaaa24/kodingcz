@@ -179,17 +179,21 @@ export default function Home() {
             <h3 className={styles.subhead} id="cenik">
               Ceník a služby
             </h3>
-            <div className={styles.priceGrid}>
+            <div className={styles.priceList}>
               {microErp.pricing.map((p, i) => (
                 <article
                   key={p.item}
-                  className={styles.priceCard}
+                  className={styles.priceItem}
                   data-reveal
                   style={stagger(i)}
                 >
-                  <h4 className={styles.priceItem}>{p.item}</h4>
+                  <div className={styles.priceInfo}>
+                    <h4 className={styles.priceName}>{p.item}</h4>
+                    {p.note && (
+                      <span className={styles.priceNote}>{p.note}</span>
+                    )}
+                  </div>
                   <span className={styles.priceValue}>{p.price}</span>
-                  {p.note && <span className={styles.priceNote}>{p.note}</span>}
                 </article>
               ))}
             </div>

@@ -200,8 +200,9 @@
 
 .sectionHead {
   display: flex;
-  gap: clamp(1rem, 3vw, 2.5rem);
+  flex-direction: column;
   align-items: flex-start;
+  gap: 0.6rem;
   margin-bottom: clamp(2.5rem, 5vw, 4rem);
   padding-top: clamp(1.5rem, 3vw, 2.2rem);
   border-top: 2px solid var(--line-strong);
@@ -209,15 +210,15 @@
 
 .sectionNum {
   font-family: var(--stack-mono);
-  font-size: clamp(1rem, 2vw, 1.4rem);
+  font-size: clamp(0.95rem, 1.6vw, 1.2rem);
   font-weight: 600;
-  color: var(--fg);
+  color: var(--accent);
   flex-shrink: 0;
 }
 
 .sectionTitle {
   font-size: clamp(1.8rem, 4.2vw, 3rem);
-  margin-top: 0.5rem;
+  margin-top: 0.4rem;
   max-width: 20ch;
 }
 
@@ -472,7 +473,7 @@
 .subhead {
   font-size: 1.25rem;
   margin-top: clamp(2.5rem, 5vw, 3.5rem);
-  margin-bottom: 1.4rem;
+  margin-bottom: clamp(1.8rem, 3.5vw, 2.5rem);
   padding-bottom: 0.7rem;
   border-bottom: 1px solid var(--line-strong);
 }
@@ -517,63 +518,64 @@
   background: var(--fg);
 }
 
-/* Pricing cards */
-.priceGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(290px, 100%), 1fr));
-  gap: clamp(1rem, 2vw, 1.3rem);
-}
-
-.priceCard {
-  position: relative;
-  overflow: hidden;
+/* Pricing — full-width stacked rows */
+.priceList {
   display: flex;
   flex-direction: column;
-  gap: 0.55rem;
+  gap: clamp(0.6rem, 1.2vw, 0.85rem);
+  margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.priceItem {
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 1.5rem clamp(1.5rem, 4vw, 3rem);
   background: var(--bg);
   border: 1px solid var(--line);
-  border-radius: 16px;
-  padding: clamp(1.5rem, 2.6vw, 2rem);
+  border-radius: 14px;
+  padding: clamp(1.3rem, 2.4vw, 1.7rem) clamp(1.4rem, 2.6vw, 2rem);
   transition:
     border-color 0.22s ease,
     transform 0.22s ease;
 }
 
-/* Accent bar that wipes across the top on hover. */
-.priceCard::before {
+/* Accent bar on the left edge that grows on hover. */
+.priceItem::before {
   content: "";
   position: absolute;
   top: 0;
+  bottom: 0;
   left: 0;
-  right: 0;
-  height: 3px;
+  width: 3px;
   background: var(--accent);
-  transform: scaleX(0);
-  transform-origin: left;
+  transform: scaleY(0);
+  transform-origin: top;
   transition: transform 0.28s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-.priceCard:hover {
+.priceItem:hover {
   border-color: var(--fg);
-  transform: translateY(-4px);
+  transform: translateY(-2px);
 }
 
-.priceCard:hover::before {
-  transform: scaleX(1);
+.priceItem:hover::before {
+  transform: scaleY(1);
 }
 
-.priceItem {
-  font-size: 1rem;
+.priceInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  min-width: 0;
+}
+
+.priceName {
+  font-size: 1.05rem;
   font-weight: 600;
   line-height: 1.35;
-}
-
-.priceValue {
-  margin-top: 0.4rem;
-  font-size: clamp(1.45rem, 2.6vw, 1.9rem);
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  line-height: 1.1;
 }
 
 .priceNote {
@@ -581,6 +583,27 @@
   font-size: 0.78rem;
   letter-spacing: 0.02em;
   color: var(--muted);
+}
+
+.priceValue {
+  font-size: clamp(1.2rem, 2.4vw, 1.5rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  white-space: nowrap;
+  text-align: right;
+}
+
+/* Mobile: price drops below the name, aligned left. */
+@media (max-width: 600px) {
+  .priceItem {
+    grid-template-columns: 1fr;
+    gap: 0.8rem;
+  }
+  .priceValue {
+    white-space: normal;
+    text-align: left;
+  }
 }
 
 .note {
