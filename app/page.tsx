@@ -158,15 +158,6 @@ export default function Home() {
               ))}
             </div>
 
-            <div className={styles.infoBlock} data-reveal>
-              {microErp.description.map((b) => (
-                <div key={b.label} className={styles.infoItem}>
-                  <span className={styles.infoItemLabel}>{b.label}</span>
-                  <p className={styles.infoText}>{b.text}</p>
-                </div>
-              ))}
-            </div>
-
             <div className={styles.twoCol}>
               <div>
                 <h3 className={styles.subhead}>Stručný přehled</h3>
