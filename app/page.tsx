@@ -151,11 +151,19 @@ export default function Home() {
               ))}
             </div>
 
+            <h3 className={styles.subhead}>Popis systému</h3>
+            <div className={styles.infoProsa} data-reveal>
+              {microErp.description.map((b) => (
+                <p key={b.label} className={styles.infoText}>{b.text}</p>
+              ))}
+            </div>
+
             <div className={styles.infoBlock} data-reveal>
               {microErp.description.map((b) => (
-                <p key={b.label} className={styles.infoText}>
-                  {b.text}
-                </p>
+                <div key={b.label} className={styles.infoItem}>
+                  <span className={styles.infoItemLabel}>{b.label}</span>
+                  <p className={styles.infoText}>{b.text}</p>
+                </div>
               ))}
             </div>
 
