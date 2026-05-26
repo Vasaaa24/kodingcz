@@ -1,36 +1,39 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# KODING.CZ — prezentační web
 
-## Getting Started
+Černobílý, minimalistický web pro KODING.CZ s.r.o. Postaveno na **Next.js 16** (App Router, TypeScript). Pouze texty a obrázky — žádné přihlašování ani databáze.
 
-First, run the development server:
+## Spuštění
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install      # jednou
+npm run dev      # vývojový režim → http://localhost:3000
+npm run build    # produkční build
+npm run start    # spuštění produkčního buildu
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Struktura
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+| Soubor | Obsah |
+| --- | --- |
+| `app/content.ts` | **Veškerý text webu** — sekce, ceník, kontakty. Upravujte zde. |
+| `app/page.tsx` | Sestavení stránky ze sekcí. |
+| `app/page.module.css` | Vzhled (černobílý design). |
+| `app/globals.css` | Globální styly, barvy, fonty. |
+| `components/Logo.tsx` | Logo (placeholder ve stylu značky). |
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Sekce
 
-## Learn More
+O nás · Testování aplikací · Systémy micro_ERP · Datové centrum · IT oddělení · Kontakt
 
-To learn more about Next.js, take a look at the following resources:
+## Logo
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+V `components/Logo.tsx` je zatím **placeholder** ve stylu značky (černý odznak
+„KODING.CZ"). Pro nasazení oficiálního loga:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. Vložte soubor do `public/logo.svg` (nebo `logo.png`).
+2. V `components/Logo.tsx` nahraďte SVG za `next/image` odkazující na tento soubor.
 
-## Deploy on Vercel
+## Poznámka k fontům
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Diakritika (ě, š, č, ř, ž, ů) je zajištěna podsadou `latin-ext` u fontů
+Inter a JetBrains Mono v `app/layout.tsx`.

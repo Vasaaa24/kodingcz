@@ -1,0 +1,87 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg);
+  transition: transform 0.55s cubic-bezier(0.7, 0, 0.3, 1);
+}
+
+/* Slides up out of view — no fade. */
+.leaving {
+  transform: translateY(-100%);
+}
+
+.stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(1.1rem, 3vw, 1.6rem);
+}
+
+/* Transparent logo sits directly on the light backdrop — no box. */
+.logoWrap {
+  display: inline-flex;
+  animation:
+    pop 0.7s cubic-bezier(0.18, 0.9, 0.2, 1) both,
+    breathe 3.2s ease-in-out 0.9s infinite;
+}
+
+.logo {
+  width: min(62vw, 360px);
+  height: auto;
+  max-height: 70vh;
+  object-fit: contain;
+  display: block;
+}
+
+/* Thin loading indicator. */
+.bar {
+  width: clamp(140px, 40vw, 220px);
+  height: 2px;
+  background: var(--line);
+  overflow: hidden;
+}
+
+.barFill {
+  width: 0%;
+  height: 100%;
+  background: var(--fg);
+  animation: fill 1s cubic-bezier(0.4, 0, 0.2, 1) 0.45s forwards;
+}
+
+@keyframes pop {
+  from {
+    transform: scale(0.9) translateY(8px);
+  }
+  to {
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes breathe {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes fill {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .logoWrap {
+    animation: none;
+  }
+}

@@ -1,0 +1,99 @@
+.bar {
+  position: fixed;
+  inset-inline: 0;
+  bottom: 0;
+  z-index: 100;
+  background: var(--fg);
+  color: var(--bg);
+  border-top: 1px solid #333;
+  animation: rise 0.28s ease;
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: clamp(1rem, 3vw, 2.5rem);
+  padding-block: 1.1rem;
+}
+
+.text {
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: #d4d4d4;
+  max-width: 70ch;
+}
+
+.link {
+  color: var(--bg);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.link:hover {
+  opacity: 0.8;
+}
+
+.actions {
+  display: flex;
+  gap: 0.6rem;
+  flex-shrink: 0;
+}
+
+.btnPrimary,
+.btnGhost {
+  font: inherit;
+  font-size: 0.88rem;
+  font-weight: 600;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.18s ease, color 0.18s ease, border-color 0.18s ease;
+}
+
+.btnPrimary {
+  background: var(--bg);
+  color: var(--fg);
+  border: 1px solid var(--bg);
+}
+
+.btnPrimary:hover {
+  background: #e2e2e2;
+  border-color: #e2e2e2;
+}
+
+.btnGhost {
+  background: transparent;
+  color: var(--bg);
+  border: 1px solid #555;
+}
+
+.btnGhost:hover {
+  border-color: var(--bg);
+}
+
+@media (max-width: 680px) {
+  .inner {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.9rem;
+  }
+  .actions {
+    justify-content: stretch;
+  }
+  .btnPrimary,
+  .btnGhost {
+    flex: 1;
+    text-align: center;
+  }
+}
+
+@keyframes rise {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}

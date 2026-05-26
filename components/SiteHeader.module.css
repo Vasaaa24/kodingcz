@@ -1,0 +1,163 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: saturate(180%) blur(12px);
+  border-bottom: 1px solid var(--line);
+}
+
+/* When the mobile menu is open, make the bar solid so nothing shows
+   through and the blur (janky on mobile) is dropped. */
+.header[data-open="true"] {
+  background: var(--bg);
+  backdrop-filter: none;
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 72px;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--stack-mono);
+  font-weight: 700;
+  font-size: 1.15rem;
+  letter-spacing: -0.02em;
+}
+
+/* Desktop nav */
+.navDesktop {
+  display: flex;
+  gap: clamp(1rem, 2.4vw, 2.2rem);
+}
+
+.link {
+  position: relative;
+  font-size: 0.92rem;
+  color: var(--muted);
+  transition: color 0.18s ease;
+}
+
+.link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 100%;
+  height: 1.5px;
+  background: var(--fg);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.link:hover {
+  color: var(--fg);
+}
+
+.link:hover::after {
+  transform: scaleX(1);
+}
+
+/* Burger */
+.burger {
+  display: none;
+  position: relative;
+  width: 44px;
+  height: 44px;
+  margin-right: -10px;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+.burger span {
+  position: absolute;
+  left: 11px;
+  width: 22px;
+  height: 2px;
+  background: var(--fg);
+  transition: transform 0.25s ease, opacity 0.2s ease;
+}
+
+.burger span:nth-child(1) {
+  top: 16px;
+}
+.burger span:nth-child(2) {
+  top: 21px;
+}
+.burger span:nth-child(3) {
+  top: 26px;
+}
+
+.burger[data-open="true"] span:nth-child(1) {
+  transform: translateY(5px) rotate(45deg);
+}
+.burger[data-open="true"] span:nth-child(2) {
+  opacity: 0;
+}
+.burger[data-open="true"] span:nth-child(3) {
+  transform: translateY(-5px) rotate(-45deg);
+}
+
+/* Mobile menu — fixed overlay pinned under the 72px header bar. */
+.mobilePanel {
+  display: none;
+  position: fixed;
+  top: 72px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 49;
+  background: var(--bg);
+  border-top: 1px solid var(--line);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.navMobile {
+  display: flex;
+  flex-direction: column;
+  max-width: var(--max);
+  margin-inline: auto;
+  padding: 0.5rem var(--pad) 1.5rem;
+}
+
+.mobileLink {
+  padding: 1.05rem 0;
+  font-size: 1.15rem;
+  font-weight: 500;
+  border-bottom: 1px solid var(--line);
+}
+
+.mobileLink:last-child {
+  border-bottom: 0;
+}
+
+@media (max-width: 760px) {
+  .navDesktop {
+    display: none;
+  }
+  .burger {
+    display: block;
+  }
+  /* Show only when toggled open. */
+  .mobilePanel[data-open="true"] {
+    display: block;
+    animation: fadeIn 0.18s ease;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

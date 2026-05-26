@@ -1,0 +1,85 @@
+.page {
+  padding-top: clamp(3rem, 7vw, 5rem);
+  padding-bottom: clamp(4rem, 9vw, 7rem);
+  max-width: 820px;
+}
+
+.title {
+  font-size: clamp(2.2rem, 6vw, 3.4rem);
+  margin-top: 0.8rem;
+}
+
+.updated {
+  margin-top: 0.6rem;
+  font-family: var(--stack-mono);
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+
+.note {
+  margin-top: 1.8rem;
+  padding: 1rem 1.2rem;
+  border-left: 2px solid var(--fg);
+  background: #f6f6f6;
+  font-size: 0.92rem;
+  color: #2a2a2a;
+}
+
+.note code {
+  font-family: var(--stack-mono);
+  font-size: 0.85em;
+}
+
+.section {
+  margin-top: clamp(2.2rem, 4vw, 3rem);
+}
+
+.section h2 {
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid var(--line-strong);
+}
+
+.section p {
+  color: #2a2a2a;
+  margin-bottom: 0.9rem;
+}
+
+.section ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.section li {
+  position: relative;
+  padding-left: 1.5rem;
+  color: #2a2a2a;
+}
+
+.section li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 0.7rem;
+  height: 1px;
+  background: var(--fg);
+}
+
+.back {
+  margin-top: clamp(3rem, 6vw, 4.5rem);
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--line);
+}
+
+.back a {
+  font-weight: 600;
+}
+
+.back a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
