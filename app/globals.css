@@ -110,15 +110,16 @@ h4 {
 /* Scroll-reveal. Hiding is scoped to .reveal-ready (added by ScrollReveal
    only when JS runs and motion is allowed), so content is never stuck hidden. */
 .reveal-ready [data-reveal] {
-  /* Transform-only (GPU-composited) reveal — smooth spring-like deceleration,
-     no opacity fade. Light on performance. */
-  transform: translateY(30px) scale(0.98);
-  transition: transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  opacity: 0;
+  transform: translateY(60px) scale(0.97);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
   transition-delay: var(--reveal-delay, 0ms);
-  will-change: transform;
+  will-change: opacity, transform;
 }
 
 .reveal-ready [data-reveal].is-revealed {
+  opacity: 1;
   transform: none;
 }
 
@@ -131,6 +132,7 @@ h4 {
     transition: none !important;
   }
   [data-reveal] {
+    opacity: 1 !important;
     transform: none !important;
   }
 }
