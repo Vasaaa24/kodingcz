@@ -422,21 +422,20 @@
 
 /* All description paragraphs in a single bordered block. */
 .infoBlock {
-  display: flex;
-  flex-direction: column;
-  gap: 1.1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(380px, 100%), 1fr));
+  gap: clamp(1.4rem, 2.5vw, 2rem) clamp(2.5rem, 6vw, 5rem);
   background: var(--bg);
   border: 1px solid var(--line);
-  border-left: 3px solid var(--accent);
-  padding: clamp(1.6rem, 3vw, 2.4rem);
+  border-top: 3px solid var(--accent);
+  padding: clamp(2rem, 3.5vw, 3rem);
   margin-bottom: clamp(2.5rem, 5vw, 3.5rem);
 }
 
 .infoText {
   font-size: 1rem;
-  line-height: 1.68;
+  line-height: 1.72;
   color: #2a2a2a;
-  max-width: 70ch;
   hyphens: auto;
   -webkit-hyphens: auto;
   overflow-wrap: break-word;
