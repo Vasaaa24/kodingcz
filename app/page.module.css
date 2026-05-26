@@ -803,6 +803,62 @@ a.footerValue:hover {
   text-underline-offset: 2px;
 }
 
+/* ---------- Section image placeholder ---------- */
+.sectionImg {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 6;
+  background: #f2f2f2;
+  border: 2px dashed var(--line-strong);
+  border-radius: 4px;
+  margin-bottom: clamp(2.5rem, 5vw, 3.5rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.sectionImg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 40px 40px;
+  opacity: 0.5;
+}
+
+.sectionImg::after {
+  content: "Fotografie / obrázek";
+  position: relative;
+  font-family: var(--stack-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  background: var(--bg);
+  padding: 0.5rem 1.2rem;
+  border: 1px solid var(--line-strong);
+}
+
+.sectionImgDark {
+  background: #161616;
+  border-color: #333;
+}
+
+.sectionImgDark::before {
+  background-image:
+    linear-gradient(#2a2a2a 1px, transparent 1px),
+    linear-gradient(90deg, #2a2a2a 1px, transparent 1px);
+}
+
+.sectionImgDark::after {
+  color: #666;
+  background: var(--fg);
+  border-color: #333;
+}
+
 /* ---------- Mobile refinements ---------- */
 @media (max-width: 640px) {
   /* Stack the section number above the title for a cleaner column. */

@@ -87,6 +87,7 @@ export default function Home() {
         <section id="testovani" className={`${styles.section} ${styles.alt}`}>
           <div className="container">
             <SectionHead num="02" title={testing.title} />
+            <div className={styles.sectionImg} data-reveal />
             <div className={styles.cards}>
               {testing.services
                 .filter((s) => !s.bullets)
@@ -133,6 +134,7 @@ export default function Home() {
               eyebrow={microErp.eyebrow}
               title={microErp.title}
             />
+            <div className={styles.sectionImg} data-reveal />
 
             <div className={styles.vendors}>
               {microErp.vendors.map((v, i) => (
@@ -224,6 +226,7 @@ export default function Home() {
         >
           <div className="container">
             <SectionHead num="04" title={dataCenter.title} dark />
+            <div className={`${styles.sectionImg} ${styles.sectionImgDark}`} data-reveal />
             <p className={`${styles.lead} ${styles.leadDark}`}>
               {dataCenter.intro}
             </p>
@@ -255,6 +258,7 @@ export default function Home() {
         <section id="it" className={styles.section}>
           <div className="container">
             <SectionHead num="05" title={it.title} />
+            <div className={styles.sectionImg} data-reveal />
             <div className={styles.itGrid} data-reveal>
               <div>
                 <h3 className={styles.subhead}>Proč si vybrat nás</h3>
