@@ -279,6 +279,7 @@ export const it = {
   portfolioIntro:
     "Vybrané veřejné webové aplikace z naší dílny. Řada dalších projektů je soukromá.",
   portfolio: [
+    { name: "Rednify", url: "https://rednify.com/cz" },
     { name: "Wollq", url: "https://wollq.com/en" },
     { name: "Žaluzie RV", url: "https://zaluzie-rv.cz/" },
     { name: "Edelweiss Tour", url: "https://edelweiss-tour.com/en" },
