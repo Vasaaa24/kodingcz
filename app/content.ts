@@ -249,6 +249,43 @@ export const dataCenter = {
 
 export const it = {
   title: "IT oddělení",
+  intro:
+    "Jsme tým vývojářů, který staví software na míru. Navrhujeme a programujeme SaaS platformy, webové aplikace a aplikace na míru, staráme se o design a poskytujeme konzultace — od prvotního nápadu až po nasazení a provoz.",
+  services: [
+    {
+      title: "SaaS systémy",
+      text: "Navrhujeme a vyvíjíme cloudové platformy poskytované jako služba — od architektury a multitenancy po správu předplatného a škálování.",
+    },
+    {
+      title: "Webové aplikace",
+      text: "Stavíme moderní, výkonné webové aplikace s důrazem na rychlost, použitelnost a dlouhodobou udržovatelnost.",
+    },
+    {
+      title: "Aplikace na míru",
+      text: "Řešení šitá přesně na procesy klienta — interní nástroje, integrace a automatizace, které usnadní každodenní práci.",
+    },
+    {
+      title: "Design",
+      text: "Navrhujeme UI/UX a vizuální identitu tak, aby produkt nejen fungoval, ale i dobře vypadal a dobře se používal.",
+    },
+    {
+      title: "Konzultace",
+      text: "Poradíme s volbou technologií, architekturou i směřováním projektu — ať začínáte, nebo škálujete existující řešení.",
+    },
+  ],
+  clientsIntro:
+    "Podíleli jsme se na systémech pro přední české i mezinárodní společnosti, mimo jiné:",
+  clients: ["Škoda Auto", "Letiště Praha", "Kofola", "O2", "PRE", "ABB"],
+  portfolioIntro:
+    "Vybrané veřejné webové aplikace z naší dílny. Řada dalších projektů je soukromá.",
+  portfolio: [
+    { name: "Wollq", url: "https://wollq.com/en" },
+    { name: "Žaluzie RV", url: "https://zaluzie-rv.cz/" },
+    { name: "Edelweiss Tour", url: "https://edelweiss-tour.com/en" },
+    { name: "Monolit SDM", url: "https://monolit-sdm.com/index.html" },
+    { name: "IPS Group", url: "https://ips-group.cz/" },
+    { name: "Barber Yanix", url: "https://barber-yanix.cz/" },
+  ],
   why: [
     "Zkušenosti z praxe",
     "Rychlé zapojení",

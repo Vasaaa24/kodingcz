@@ -258,6 +258,70 @@ export default function Home() {
           <div className="container">
             <SectionHead num="05" title={it.title} />
             <div className={styles.sectionImg} data-reveal />
+            <p className={styles.lead} data-reveal>
+              {it.intro}
+            </p>
+
+            <div className={`${styles.cards} ${styles.cardsWide}`}>
+              {it.services.map((s, i) => (
+                <article
+                  key={s.title}
+                  className={styles.card}
+                  data-reveal
+                  style={stagger(i % 3)}
+                >
+                  <h3 className={styles.cardTitle}>{s.title}</h3>
+                  <p className={styles.cardText}>{s.text}</p>
+                </article>
+              ))}
+            </div>
+
+            <div className={styles.itRefs} data-reveal>
+              <h3 className={styles.subhead}>Reference</h3>
+              <p className={styles.cardText}>{it.clientsIntro}</p>
+              <div className={styles.marquee} aria-label="Reference">
+                <ul className={styles.marqueeTrack}>
+                  {/* The track is two identical halves; the animation shifts it
+                      by exactly one half (-50%) so the loop wraps seamlessly.
+                      Each half repeats the (few, short) clients enough to span
+                      the viewport. Duplicates are hidden from screen readers. */}
+                  {[0, 1].map((half) =>
+                    [0, 1, 2, 3].flatMap(() => it.clients).map((c, i) => (
+                      <li
+                        key={`${half}-${i}`}
+                        className={styles.tag}
+                        aria-hidden={half === 1 ? "true" : undefined}
+                      >
+                        {c}
+                      </li>
+                    ))
+                  )}
+                </ul>
+              </div>
+            </div>
+
+            <div className={styles.itRefs} data-reveal>
+              <h3 className={styles.subhead}>Vybrané projekty</h3>
+              <p className={styles.cardText}>{it.portfolioIntro}</p>
+              <ul className={styles.portfolio}>
+                {it.portfolio.map((p) => (
+                  <li key={p.url}>
+                    <a
+                      href={p.url}
+                      className={styles.portfolioLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <span className={styles.portfolioName}>{p.name}</span>
+                      <span className={styles.portfolioUrl}>
+                        {p.url.replace(/^https?:\/\//, "").replace(/\/$/, "")}
+                      </span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
             <div className={styles.itGrid} data-reveal>
               <div>
                 <h3 className={styles.subhead}>Proč si vybrat nás</h3>

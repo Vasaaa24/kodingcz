@@ -709,7 +709,104 @@
 }
 
 /* ---------- IT oddělení ---------- */
+/* IT references + portfolio */
+.itRefs {
+  margin-top: clamp(2.5rem, 5vw, 3.5rem);
+}
+
+.itRefs .subhead {
+  margin-bottom: 0.6rem;
+}
+
+/* Slow infinite reference carousel (marquee). */
+.marquee {
+  margin-top: 1.4rem;
+  overflow: hidden;
+  /* Fade the chips out at both edges. */
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    #000 6%,
+    #000 94%,
+    transparent
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    #000 6%,
+    #000 94%,
+    transparent
+  );
+}
+
+.marqueeTrack {
+  list-style: none;
+  display: flex;
+  width: max-content;
+  gap: 0.6rem;
+  animation: marqueeScroll 40s linear infinite;
+}
+
+/* Pause when the visitor hovers, so they can read / click. */
+.marquee:hover .marqueeTrack {
+  animation-play-state: paused;
+}
+
+@keyframes marqueeScroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    /* Shift by exactly one half of the doubled track. */
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marqueeTrack {
+    animation: none;
+    flex-wrap: wrap;
+    width: auto;
+  }
+}
+
+.portfolio {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(260px, 100%), 1fr));
+  gap: clamp(0.75rem, 1.5vw, 1rem);
+  margin-top: 1.4rem;
+}
+
+.portfolioLink {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 1rem 1.2rem;
+  border: 1px solid var(--line);
+  transition:
+    border-color 0.22s ease,
+    transform 0.22s ease;
+}
+
+.portfolioLink:hover {
+  border-color: var(--fg);
+  transform: translateY(-3px);
+}
+
+.portfolioName {
+  font-weight: 600;
+  font-size: 1.02rem;
+}
+
+.portfolioUrl {
+  font-family: var(--stack-mono);
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+
 .itGrid {
+  margin-top: clamp(2.5rem, 5vw, 3.5rem);
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: clamp(2rem, 6vw, 5rem);
