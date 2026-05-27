@@ -2,15 +2,30 @@
   position: sticky;
   top: 0;
   z-index: 50;
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: saturate(180%) blur(12px);
+  /* Solid fallback: in-app browsers (Telegram, Instagram, FB) and any engine
+     without backdrop-filter get an opaque bar, so nothing bleeds through. */
+  background: var(--bg);
   border-bottom: 1px solid var(--line);
+}
+
+/* Glassy translucent look only where blur is actually supported. iOS WebKit
+   (which powers Telegram's in-app browser) needs the -webkit- prefix; without
+   it the blur never applied and the 85%-opaque bar let the page show through. */
+@supports (
+  (-webkit-backdrop-filter: blur(12px)) or (backdrop-filter: blur(12px))
+) {
+  .header {
+    background: rgba(255, 255, 255, 0.85);
+    -webkit-backdrop-filter: saturate(180%) blur(12px);
+    backdrop-filter: saturate(180%) blur(12px);
+  }
 }
 
 /* When the mobile menu is open, make the bar solid so nothing shows
    through and the blur (janky on mobile) is dropped. */
 .header[data-open="true"] {
   background: var(--bg);
+  -webkit-backdrop-filter: none;
   backdrop-filter: none;
 }
 
