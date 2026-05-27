@@ -282,6 +282,7 @@ export const it = {
     { name: "Rednify", url: "https://rednify.com/cz" },
     { name: "Valton", url: "https://valton.cz/" },
     { name: "Wollq", url: "https://wollq.com/en" },
+    { name: "Statek Kachlířka", url: "https://svatby-kachlirka.cz/" },
     { name: "Žaluzie RV", url: "https://zaluzie-rv.cz/" },
     { name: "Edelweiss Tour", url: "https://edelweiss-tour.com/en" },
     { name: "Monolit SDM", url: "https://monolit-sdm.com/index.html" },
