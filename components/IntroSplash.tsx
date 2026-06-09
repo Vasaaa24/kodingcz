@@ -52,10 +52,10 @@ export default function IntroSplash() {
       <div className={styles.stage}>
         <div className={styles.logoWrap}>
           <Image
-            src="/Koding-transparent.png"
+            src="/Finnalblack.jpg"
             alt="KODING.CZ"
-            width={414}
-            height={514}
+            width={1187}
+            height={1967}
             priority
             sizes="(max-width: 600px) 62vw, 360px"
             className={styles.logo}

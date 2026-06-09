@@ -21,6 +21,77 @@ export default function SiteHeader() {
     return () => window.removeEventListener("keydown", onKey);
   }, [open]);
 
+  // Tuned smooth scroll for in-page anchor links. The browser's native
+  // `scroll-behavior: smooth` felt too fast and can't be slowed from CSS, so
+  // we animate manually with easing over a distance-aware duration. Handled at
+  // document level so menu links, CTAs and footer links all behave the same.
+  useEffect(() => {
+    const HEADER_OFFSET = 88;
+    const reduce = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+    const easeInOutCubic = (t: number) =>
+      t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+
+    const onClick = (e: MouseEvent) => {
+      if (
+        e.defaultPrevented ||
+        e.button !== 0 ||
+        e.metaKey ||
+        e.ctrlKey ||
+        e.shiftKey ||
+        e.altKey
+      )
+        return;
+      const link = (e.target as HTMLElement).closest("a");
+      const href = link?.getAttribute("href");
+      if (!href) return;
+
+      const hashIndex = href.indexOf("#");
+      if (hashIndex === -1) return; // not an anchor link
+
+      const here = (window.location.pathname.replace(/\/+$/, "") || "/");
+      const there = (href.slice(0, hashIndex).replace(/\/+$/, "") || "/");
+      if (here !== there) return; // different page — let the browser navigate
+
+      const id = href.slice(hashIndex + 1);
+      const target = id === "top" ? null : document.getElementById(id);
+      if (id !== "top" && !target) return; // unknown anchor — leave default
+
+      e.preventDefault();
+      setOpen(false);
+
+      const startY = window.scrollY;
+      const endY = target
+        ? Math.max(
+            0,
+            target.getBoundingClientRect().top + startY - HEADER_OFFSET,
+          )
+        : 0;
+      const distance = endY - startY;
+
+      if (reduce || Math.abs(distance) < 4) {
+        window.scrollTo(0, endY);
+        history.pushState(null, "", href);
+        return;
+      }
+
+      const duration = Math.min(1100, Math.max(550, Math.abs(distance) * 0.6));
+      let start: number | null = null;
+      const step = (now: number) => {
+        if (start === null) start = now;
+        const t = Math.min(1, (now - start) / duration);
+        window.scrollTo(0, startY + distance * easeInOutCubic(t));
+        if (t < 1) requestAnimationFrame(step);
+        else history.pushState(null, "", href);
+      };
+      requestAnimationFrame(step);
+    };
+
+    document.addEventListener("click", onClick);
+    return () => document.removeEventListener("click", onClick);
+  }, []);
+
   return (
     <>
       <header className={styles.header} data-open={open}>

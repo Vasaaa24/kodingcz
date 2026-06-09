@@ -1,0 +1,31 @@
+/* Hand-drawn line-art figures that replace the old image placeholders.
+   No frame, no background — the SVG sits directly on the section. */
+
+.figure {
+  position: relative;
+  width: 100%;
+  /* Match the section rhythm: same vertical breathing room as .lead / .subhead. */
+  margin-block: clamp(1.5rem, 3.5vw, 2.75rem) clamp(2.5rem, 5vw, 3.5rem);
+  display: flex;
+  align-items: center;
+  /* Align with the left-flush heading and body text, not centred. */
+  justify-content: flex-start;
+}
+
+/* Centre the figure — for sections where a full-width grid follows
+   (no left-flush paragraph to line up with). */
+.center {
+  justify-content: center;
+}
+
+.svg {
+  /* Span the full width of the section. */
+  width: 100%;
+  height: auto;
+  color: var(--fg);
+}
+
+/* Dark variant — used by the Datové centrum section (light strokes). */
+.dark .svg {
+  color: #f2f2f2;
+}

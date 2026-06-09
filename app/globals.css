@@ -27,7 +27,10 @@
 }
 
 html {
-  scroll-behavior: smooth;
+  /* In-page anchor scrolling is animated in JS (see SiteHeader) so the
+     duration can be tuned; the browser's native `smooth` felt too fast.
+     `scroll-padding-top` still offsets native jumps (e.g. cross-page
+     hash loads) below the fixed header. */
   scroll-padding-top: 88px;
   -webkit-text-size-adjust: 100%;
 }

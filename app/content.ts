@@ -5,20 +5,18 @@ export const nav = [
   { href: "/#o-nas", label: "O nás" },
   { href: "/#testovani", label: "Testování" },
   { href: "/#micro-erp", label: "Micro ERP" },
-  { href: "/#cenik", label: "Ceník" },
   { href: "/#datove-centrum", label: "Datové centrum" },
   { href: "/#it", label: "IT oddělení" },
   { href: "/#kontakt", label: "Kontakt" },
 ];
 
 export const hero = {
-  eyebrow: "KODING.CZ s.r.o.",
-  title: "Odborná skupina nezávislých profesionálů",
+  title: "Jsme **uzavřená** odborná skupina nezávislých profesionálů",
   lead: "Tým specialistů s dlouholetou praxí v oborech IT, FinTech, pojišťovnictví, bankovního a finančního managementu.",
   tags: ["IT", "FinTech", "Pojišťovnictví", "Bankovnictví", "Finanční management"],
   ctas: [
     { href: "/#testovani", label: "Naše služby", primary: true },
-    { href: "/#kontakt", label: "Kontaktujte nás", primary: false },
+    { href: "/#kontakt", label: "Spojení", primary: false },
   ],
   stats: [
     { value: "24/7", label: "Monitoring a podpora (NOC)" },
@@ -38,9 +36,9 @@ export const cta = {
 export const about = {
   title: "O nás",
   paragraphs: [
-    "Jsme odborná skupina nezávislých profesionálů. KODING.CZ je tým specialistů s dlouholetou praxí v oborech: IT, FinTech, pojišťovnictví, bankovního a finančního managementu.",
+    "Jsme **uzavřená** odborná skupina nezávislých profesionálů. KODING.CZ je tým specialistů s dlouholetou praxí v oborech: IT, FinTech, pojišťovnictví, bankovního a finančního managementu.",
     "Vyvíjíme, aplikujeme a spravujeme databáze a interaktivní řídicí systémy ERP a CRM. Šité na míru dle potřeb a požadavků zákazníka! Oddíl IT se zaměřuje i na rozsáhlé programování v rámci externích systémů.",
-    "Provozujeme a nabízíme rozsáhlé služby Datového Centra (DC – Zbraslav).",
+    "Provozujeme a nabízíme rozsáhlé služby Datového Centra (DC – Čáslav).",
   ],
   refIntro: "Zkušenosti z testování softwaru v regulovaných odvětvích.",
   references: [
@@ -103,6 +101,129 @@ export const testing = {
       ],
     },
   ],
+  testedAppsIntro: "Testované aplikace",
+  testedApps: [
+    { name: "Tufin", logo: "/tuffin.png" },
+    { name: "SIEM", logo: "/siem.png" },
+    { name: "ArcSight", logo: "/ARCsight.png" },
+    { name: "Trend Micro", logo: "/trend-micro.png" },
+  ],
+};
+
+export const aiTesting = {
+  title: "AI testování softwaru",
+  capabilities: [
+    {
+      title: "Generování testovacích scénářů",
+      text: "AI dokáže analyzovat dokumentaci (např. zadání) a automaticky navrhnout testovací případy (test cases).",
+    },
+    {
+      title: "Vizuální kontrola (Visual Testing)",
+      text: "Umí porovnávat vzhled aplikace napříč různými zařízeními a odhalit i drobné grafické chyby, kterých by si člověk nemusel všimnout.",
+    },
+    {
+      title: "Samoléčebné testy (Self-healing)",
+      text: "Když vývojáři změní kód (např. upraví tlačítko), tradiční automatizované testy často spadnou. AI dokáže změnu detekovat a testy automaticky opravit.",
+    },
+    {
+      title: "Prediktivní analýza",
+      text: "AI analyzuje historii chyb v kódu a doporučí, které části aplikace by se měly otestovat přednostně.",
+    },
+  ],
+  toolsIntro: "Běžné AI testovací nástroje",
+  tools: [
+    {
+      name: "Testim",
+      text: "Využívá AI pro stabilní automatizaci testů s funkcí self-healing.",
+    },
+    {
+      name: "Applitools",
+      text: "Specializuje se na automatizované vizuální testování a kontrolu UI.",
+    },
+    {
+      name: "Mabl",
+      text: "Platforma, která automatizuje tvorbu a údržbu testů pomocí bezkódového rozhraní (low-code/no-code).",
+    },
+  ],
+  pros: "Zrychlení vývoje, úspora času, snížení chybovosti v produkci.",
+  cons: "AI postrádá **lidskou intuici a kreativitu**, nedokáže plně pochopit uživatelský záměr (UX) nebo vymyslet nestandardní scénáře chování.",
+};
+
+export const testingStandards = {
+  title: "Standardy testování",
+  intro:
+    "Testování softwaru se dělí podle různých kritérií. Mezi základní přístupy patří manuální a automatizované testování. Z hlediska fáze vývoje rozlišujeme testy jednotkové (unit), integrační, systémové a akceptační. Z hlediska zaměření se pak dělí na funkční a nefunkční testy.",
+  groups: [
+    {
+      label: "Podle přístupu kódování",
+      ordered: false,
+      items: [
+        {
+          name: "Black-box testování",
+          text: "Tester nevidí do vnitřní struktury kódu. Zaměřuje se pouze na vstupy a výstupy a ověřuje, zda systém funguje podle očekávání.",
+        },
+        {
+          name: "White-box testování",
+          text: "Tester zná vnitřní strukturu a kód aplikace. Ověřuje logiku, datové toky a správné provádění jednotlivých vnitřních částí.",
+        },
+      ],
+    },
+    {
+      label: "Podle fáze vývoje",
+      ordered: true,
+      items: [
+        {
+          name: "Jednotkové testy (Unit tests)",
+          text: "Testují nejmenší části kódu (např. jednotlivé funkce nebo metody). Obvykle je píší přímo vývojáři.",
+        },
+        {
+          name: "Integrační testy",
+          text: "Ověřují, zda jednotlivé samostatné moduly správně spolupracují, když jsou spojeny dohromady.",
+        },
+        {
+          name: "Systémové testy",
+          text: "Testují kompletní a integrovaný systém. Ověřují, zda splňuje celkové požadavky a funguje jako jeden celek.",
+        },
+        {
+          name: "Akceptační testy",
+          text: "Provádí je většinou zákazník nebo uživatel s cílem ověřit, zda systém splňuje byznysové požadavky a je připraven k nasazení.",
+        },
+      ],
+    },
+    {
+      label: "Podle způsobu provedení",
+      ordered: false,
+      items: [
+        {
+          name: "Manuální testování",
+          text: "Testovací případy spouští a vyhodnocuje lidský tester. Vhodné pro explorativní testování a testování uživatelské přívětivosti.",
+        },
+        {
+          name: "Automatizované testování",
+          text: "K provádění testů se používají speciální nástroje a skripty. Umožňuje rychlé opakování testů, např. při verzování kódu.",
+        },
+      ],
+    },
+    {
+      label: "Podle zaměření (typy testů)",
+      ordered: false,
+      items: [
+        {
+          name: "Funkční testování",
+          text: "Ověřuje, co produkt dělá – tedy zda jednotlivé funkce a tlačítka plní svůj účel. Zahrnuje i tzv. regresní testy, které kontrolují, zda nová úprava kódu nerozbila stávající funkce.",
+        },
+        {
+          name: "Nefunkční testování",
+          text: "Zkoumá, jak aplikace funguje (ne její konkrétní funkce). Zahrnuje zejména:",
+          bullets: [
+            "Výkonnostní a zátěžové testování: Měří rychlost a chování aplikace pod velkým náporem uživatelů.",
+            "Testování použitelnosti (Usability): Zkoumá, jak snadno a intuitivně se s aplikací pracuje.",
+            "Bezpečnostní testování: Hledá zranitelnosti a slabiny systému, které by mohly být zneužity.",
+          ],
+        },
+      ],
+    },
+  ],
 };
 
 export const microErp = {
@@ -117,7 +238,7 @@ export const microErp = {
     },
     {
       role: "Poskytovatel a administrativní správce systému",
-      name: "KODING.CZ s.r.o.",
+      name: "KODING.CZ",
       ico: "17910714",
     },
   ],
@@ -140,7 +261,7 @@ export const microErp = {
     },
     {
       label: "Využití v praxi",
-      text: "Aplikování micro_ERP do obchodní struktury umožňuje detailní kontrolu a analýzu finanční situace, plánování stávajícího/budoucího rozpočtu a přehlednou finanční historii s výkazem hrubého/čistého zisku na dva kliky.",
+      text: "Aplikování micro_ERP do obchodní struktury umožňuje detailní kontrolu a analýzu finanční situace, plánování stávajícího/budoucího rozpočtu a přehlednou finanční historii s výkazem hrubého/čistého zisku na **dva kliky**.",
     },
   ],
   overview: [
@@ -194,13 +315,13 @@ export const microErp = {
       text: "Správa, řízení a archivace obchodní dokumentace a spojených procesů.",
     },
   ],
-  note: "Dále nabízíme automatické systémy k testování a BETA testování aplikací, IT, FinTech a StartUp projektů, zaměřených především na správu a řízení analytických účtů a hierarchických podúčtů, výpočtu a reportu úrokových sazeb, provizních systémů a stručných přehledů o čistém zisku korporace.",
+  note: "Dále nabízíme automatické systémy k testování a BETA testování aplikací, IT, FinTech a StartUp projektů, zaměřených především na správu a řízení analytických účtů a hierarchických podúčtů, výpočtu a reportu úrokových sazeb, provizních systémů a stručných přehledů o **čistém zisku korporace**.",
 };
 
 export const dataCenter = {
   title: "Datové centrum",
   intro:
-    "Naše datové centrum poskytuje komplexní profesionální portfolio služeb zaměřených hlavně na bezpečný a efektivní provoz IT infrastruktury zákazníků.",
+    "Naše datové centrum poskytuje komplexní profesionální portfolio služeb zaměřených hlavně na **bezpečný a efektivní** provoz IT infrastruktury zákazníků.",
   services: [
     {
       title: "Server housing / Colocation",
@@ -244,7 +365,7 @@ export const dataCenter = {
     },
   ],
   closing:
-    "Naším cílem je poskytovat zákazníkům moderní a bezpečné IT služby, které podporují stabilní růst jejich podnikání a zajišťují vysokou dostupnost systémů.",
+    "Naším cílem je poskytovat zákazníkům moderní a bezpečné IT služby, které podporují stabilní růst jejich podnikání a zajišťují **vysokou dostupnost systémů**.",
 };
 
 export const it = {
@@ -272,6 +393,22 @@ export const it = {
       title: "Konzultace",
       text: "Poradíme s volbou technologií, architekturou i směřováním projektu — ať začínáte, nebo škálujete existující řešení.",
     },
+  ],
+  technologies: [
+    "TypeScript",
+    "SQL",
+    "JavaScript",
+    "ABAP",
+    "JSON",
+    "React",
+    "Next.js",
+    "oData",
+    "REST",
+    "XML",
+    "HTML",
+    "CSS",
+    "Tailwind",
+    "Wrap",
   ],
   clientsIntro:
     "Podíleli jsme se na systémech pro přední české i mezinárodní společnosti, mimo jiné:",
@@ -307,8 +444,11 @@ export const it = {
 
 export const contact = {
   title: "Kontakt",
-  company: "KODING.CZ s.r.o.",
+  company: "KODING.CZ",
   ico: "17910714",
-  location: "Datové centrum – Zbraslav",
+  location: "Datové centrum – Čáslav",
+  address: "Pitterova 2855/7, 130 00 Praha 3",
+  phone: "+420 233 311 494",
+  email: "info@koding.cz",
   web: "www.koding.cz",
 };

@@ -1,5 +1,6 @@
 import type { CSSProperties } from "react";
 import CountUp from "@/components/CountUp";
+import SectionFigure from "@/components/SectionFigure";
 import SiteHeader from "@/components/SiteHeader";
 import styles from "./page.module.css";
 import {
@@ -16,6 +17,18 @@ import {
 const stagger = (i: number): CSSProperties =>
   ({ "--reveal-delay": `${i * 70}ms` }) as CSSProperties;
 
+/** Render content text, turning `**phrase**` markers into accent-coloured spans. */
+const rich = (text: string) =>
+  text.split(/\*\*(.+?)\*\*/g).map((part, i) =>
+    i % 2 === 1 ? (
+      <span key={i} className={styles.hl}>
+        {part}
+      </span>
+    ) : (
+      part
+    ),
+  );
+
 export default function Home() {
   return (
     <>
@@ -25,20 +38,31 @@ export default function Home() {
         {/* HERO */}
         <section className={styles.hero}>
           <div className={`container ${styles.heroCopy}`}>
-            <p className="eyebrow">{hero.eyebrow}</p>
-            <h1 className={styles.heroTitle}>{hero.title}</h1>
-            <p className={styles.heroLead}>{hero.lead}</p>
+            <div className={styles.heroTop}>
+              <div className={styles.heroTopText}>
+                <h1 className={styles.heroTitle}>{rich(hero.title)}</h1>
+                <p className={styles.heroLead}>{hero.lead}</p>
 
-            <div className={styles.heroActions}>
-              {hero.ctas.map((c) => (
-                <a
-                  key={c.href}
-                  href={c.href}
-                  className={c.primary ? styles.btnPrimary : styles.btnGhost}
-                >
-                  {c.label}
-                </a>
-              ))}
+                <div className={styles.heroActions}>
+                  {hero.ctas.map((c) => (
+                    <a
+                      key={c.href}
+                      href={c.href}
+                      className={c.primary ? styles.btnPrimary : styles.btnGhost}
+                    >
+                      {c.label}
+                    </a>
+                  ))}
+                </div>
+              </div>
+              <div className={styles.heroLogo}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/Finnalblack.jpg"
+                  alt="KODING.CZ"
+                  className={styles.heroCat}
+                />
+              </div>
             </div>
 
             <ul className={styles.tags}>
@@ -67,7 +91,7 @@ export default function Home() {
             <div className={styles.aboutGrid} data-reveal>
               <div className={styles.prose}>
                 {about.paragraphs.map((p, i) => (
-                  <p key={i}>{p}</p>
+                  <p key={i}>{rich(p)}</p>
                 ))}
               </div>
               <ul className={styles.refList}>
@@ -87,7 +111,7 @@ export default function Home() {
         <section id="testovani" className={`${styles.section} ${styles.alt}`}>
           <div className="container">
             <SectionHead num="02" title={testing.title} />
-            <div className={styles.sectionImg} data-reveal />
+            <SectionFigure variant="testing" center />
             <div className={styles.cards}>
               {testing.services
                 .filter((s) => !s.bullets)
@@ -123,6 +147,27 @@ export default function Home() {
                   </article>
                 ))}
             </div>
+
+            {/* Testované aplikace */}
+            <h3 className={styles.miniHead}>{testing.testedAppsIntro}</h3>
+            <div className={styles.logoGrid}>
+              {testing.testedApps.map((a, i) => (
+                <div
+                  key={a.name}
+                  className={styles.logoItem}
+                  data-reveal
+                  style={stagger(i)}
+                >
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={a.logo}
+                    alt={a.name}
+                    className={styles.logoImg}
+                    loading="lazy"
+                  />
+                </div>
+              ))}
+            </div>
           </div>
         </section>
 
@@ -134,7 +179,7 @@ export default function Home() {
               eyebrow={microErp.eyebrow}
               title={microErp.title}
             />
-            <div className={styles.sectionImg} data-reveal />
+            <SectionFigure variant="erp" center />
 
             <div className={styles.vendors}>
               {microErp.vendors.map((v, i) => (
@@ -154,7 +199,7 @@ export default function Home() {
             <h3 className={styles.subhead}>Popis systému</h3>
             <div className={styles.infoProsa} data-reveal>
               {microErp.description.map((b) => (
-                <p key={b.label} className={styles.infoText}>{b.text}</p>
+                <p key={b.label} className={styles.infoText}>{rich(b.text)}</p>
               ))}
             </div>
 
@@ -214,7 +259,7 @@ export default function Home() {
               ))}
             </div>
 
-            <p className={styles.note}>{microErp.note}</p>
+            <p className={styles.note}>{rich(microErp.note)}</p>
           </div>
         </section>
 
@@ -225,9 +270,9 @@ export default function Home() {
         >
           <div className="container">
             <SectionHead num="04" title={dataCenter.title} dark />
-            <div className={`${styles.sectionImg} ${styles.sectionImgDark}`} data-reveal />
+            <SectionFigure variant="datacenter" dark />
             <p className={`${styles.lead} ${styles.leadDark}`}>
-              {dataCenter.intro}
+              {rich(dataCenter.intro)}
             </p>
             <div className={styles.dcGrid}>
               {dataCenter.services.map((s, i) => (
@@ -246,9 +291,13 @@ export default function Home() {
                   </div>
                 </article>
               ))}
+              <div className={styles.dcCat} data-reveal aria-hidden="true">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/blackcat.png" alt="" className={styles.dcCatImg} />
+              </div>
             </div>
             <p className={`${styles.closing} ${styles.leadDark}`}>
-              {dataCenter.closing}
+              {rich(dataCenter.closing)}
             </p>
           </div>
         </section>
@@ -257,7 +306,7 @@ export default function Home() {
         <section id="it" className={styles.section}>
           <div className="container">
             <SectionHead num="05" title={it.title} />
-            <div className={styles.sectionImg} data-reveal />
+            <SectionFigure variant="it" />
             <p className={styles.lead} data-reveal>
               {it.intro}
             </p>
@@ -274,6 +323,33 @@ export default function Home() {
                   <p className={styles.cardText}>{s.text}</p>
                 </article>
               ))}
+              <div className={styles.itCat} data-reveal aria-hidden="true">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/watchingcat.png"
+                  alt=""
+                  className={styles.itCatImg}
+                />
+              </div>
+            </div>
+
+            <div className={styles.itRefs} data-reveal>
+              <h3 className={styles.subhead}>Technologie</h3>
+              <ul className={styles.techGrid}>
+                {it.technologies.map((t, i) => (
+                  <li
+                    key={t}
+                    className={styles.techItem}
+                    data-reveal
+                    style={stagger(i % 4)}
+                  >
+                    <span className={styles.techNum}>
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <span className={styles.techName}>{t}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
 
             <div className={styles.itRefs} data-reveal>
@@ -355,8 +431,30 @@ export default function Home() {
               <span className={styles.footerMuted}>IČO: {contact.ico}</span>
             </div>
             <div className={styles.footerCol}>
+              <span className={styles.footerLabel}>Adresa</span>
+              <span className={styles.footerValue}>{contact.address}</span>
+            </div>
+            <div className={styles.footerCol}>
               <span className={styles.footerLabel}>Datové centrum</span>
               <span className={styles.footerValue}>{contact.location}</span>
+            </div>
+            <div className={styles.footerCol}>
+              <span className={styles.footerLabel}>Telefon</span>
+              <a
+                href={`tel:${contact.phone.replace(/\s/g, "")}`}
+                className={styles.footerValue}
+              >
+                {contact.phone}
+              </a>
+            </div>
+            <div className={styles.footerCol}>
+              <span className={styles.footerLabel}>E-mail</span>
+              <a
+                href={`mailto:${contact.email}`}
+                className={styles.footerValue}
+              >
+                {contact.email}
+              </a>
             </div>
             <div className={styles.footerCol}>
               <span className={styles.footerLabel}>Web</span>
@@ -372,10 +470,12 @@ export default function Home() {
           </div>
           <div className={styles.footerBottom}>
             <span className={styles.copy}>
-              © {new Date().getFullYear()} KODING.CZ s.r.o. — Všechna práva
+              © {new Date().getFullYear()} KODING.CZ — Všechna práva
               vyhrazena.
             </span>
-            <nav className={styles.legal} aria-label="Právní informace">
+            <nav className={styles.legal} aria-label="Další informace">
+              <a href="/standardy">AI testování softwaru</a>
+              <a href="/standardy#standardy">Standardy testování</a>
               <a href="/gdpr">Ochrana osobních údajů (GDPR)</a>
               <a href="/gdpr#cookies">Cookies</a>
             </nav>

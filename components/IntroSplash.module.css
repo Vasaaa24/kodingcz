@@ -30,16 +30,16 @@
 }
 
 .logo {
-  width: min(62vw, 360px);
+  width: min(82vw, 380px);
   height: auto;
-  max-height: 70vh;
+  max-height: 82vh;
   object-fit: contain;
   display: block;
 }
 
-/* Thin loading indicator. */
+/* Thin loading indicator — same width as the logo above it. */
 .bar {
-  width: clamp(140px, 40vw, 220px);
+  width: min(82vw, 380px);
   height: 2px;
   background: var(--line);
   overflow: hidden;

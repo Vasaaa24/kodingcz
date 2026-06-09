@@ -4,9 +4,9 @@ import { contact } from "../content";
 import styles from "./gdpr.module.css";
 
 export const metadata: Metadata = {
-  title: "Ochrana osobních údajů (GDPR) — KODING.CZ",
+  title: "Ochrana osobních údajů (GDPR)",
   description:
-    "Zásady zpracování a ochrany osobních údajů a používání cookies společnosti KODING.CZ s.r.o.",
+    "Zásady zpracování a ochrany osobních údajů a používání cookies společnosti KODING.CZ",
 };
 
 export default function GdprPage() {
